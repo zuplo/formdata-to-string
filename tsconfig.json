@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./src",
+    "declaration": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "es2020"],
+
+    // The bulk of this library is code taken from `undici` internals so we aren't going to bother
+    // trying to type everything, instead opting for handling that in unit test coverage.
+    "noImplicitAny": false,
+
+    "outDir": "dist/",
+  },
+  "include": ["./src/**/*"]
+}

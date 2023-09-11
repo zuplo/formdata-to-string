@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`#formdata-to-string > should convert a basic instance into a string 1`] = `
+"------formdata-undici-TIMESTAMP
+Content-Disposition: form-data; name=\\"dog\\"
+
+buster
+------formdata-undici-TIMESTAMP--"
+`;
+
+exports[`#formdata-to-string > should support Blob objects 1`] = `
+"------formdata-undici-TIMESTAMP
+Content-Disposition: form-data; name=\\"image\\"; filename=\\"owlbert.png\\"
+Content-Type: image/png
+
+data:image/png;name=owlbert.png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAMCAYAAABbayygAAABV0lEQVR4AWNwL/Bh0FGQ9FWUENUGsZExPz8/h5gArzmIDRZw1VfpSfeyagIJgiRBYkCg7mOl72akIt0KVwhSVB5o9SPESutJWajzquJgx/lRDganc7zNX3obq9SiKKxN8P/fmB33vybc7j+MHe1k8t9RSy4NrrA4K2Xp1k0b/peUlPzPjfL5v3bpgv9NTc3/48JD/sOsBju4JDnq6MS+3v9uLlb/pzeY/l82r+9/cIA/GNtrK2wFqQH7uDzY/gXQOrBpbemi/xO9DH4B2WCrQe4GqWHQVRDfBnLXpDTX/z3xTii4xM/if4iF5n+QGgZjZamvIIH5RT5wPKvQC0wDDQAr1FMQ/8YgK8zfAzIeqgCOp+V5gBW6Giq9A6kB+9pUXTiqINjwJ9B6uKKmBHuwW7XkhFeAYg2sMMWXQTvJh/2Uu6nciTgXvVsg7Gsp+xAkZqHPIA1SAwCKnrxJusHahgAAAABJRU5ErkJggg==
+------formdata-undici-TIMESTAMP--"
+`;
+
+exports[`#formdata-to-string > should support File objects 1`] = `
+"------formdata-undici-TIMESTAMP
+Content-Disposition: form-data; name=\\"image\\"; filename=\\"owlbert.png\\"
+Content-Type: image/png
+
+data:image/png;name=owlbert-shrub.png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACNUlEQVR4AWJkIA2wCQHqJgcouZ0ADv+SmayR28PibPOP2jafzdp6Lh/v2bVt2+1zbdvtbtbMpGfmvmD8jStc9uB3v75gdNmqtJqsa6qCDEBPRVH7XpKk1P9yHLZv3mG6keV9BIsWGqNuvNaiy+YoARFIXFXwf6Frjz/X9oS4LNRkty4QH/0MSnnWDHORHV3pJsiozRk0zWW/9MEi0A9ffqOhf5RRDW6SGLT/ZXcT8C1hWvao8iF1c4ecKx5eejW1bii1y1asW14P5XsUNkogmvVQg2aPLOnrqss9qE81OYlAucRrN/LrqlBSWYufv34jq7gKseA7MCr0IOhffForGsTWDBJnqE2/B0H+hKRRG3DtxEGk6QBZQ9UFClMSnTJe/cCVI5uQJJpx+8AyOBUPPv+JIpJjgJqCZzKT0AGdAgT/1OLtSzsKI2/gspnxvGExZYFADcoSsqM10SADF4jC4TCCUDN8nih+eoIgPAdGeajBNxyMH20JwsPNMwSicUjBCAwmAZ6GkCmA7I+qCxTGRHSkVzZiCRmKAsRkuVmWiENrt6gL5Di7iw4oogFSINIkCTU09hNAP64CREPUBbzAx9ABrc2I3w2NeY5DMByHu8AGY3YyeoKIuSmBWCD6OuqLPJXe/Dpvkb3FuoDbdENKuBVJ4nxZJpKgWoUXCMcYUwBwDfR8FxZPN4wfWK2Zunq7tGLmZMOc7x7ZUn/RuDmrX0H/4FffQ2teylCecuWmDNsTnainfwFPuNZTR3MemwAAAABJRU5ErkJggg==
+------formdata-undici-TIMESTAMP--"
+`;
