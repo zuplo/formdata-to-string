@@ -1,5 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`#formdata-to-string > options > #boundary > should support supplying a custom boundary 1`] = `
+"--CUSTOM-BOUNDARY
+Content-Disposition: form-data; name=\\"dog\\"
+
+buster
+--CUSTOM-BOUNDARY--"
+`;
+
 exports[`#formdata-to-string > should convert a basic instance into a string 1`] = `
 "------formdata-undici-TIMESTAMP
 Content-Disposition: form-data; name=\\"dog\\"

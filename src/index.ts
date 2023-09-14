@@ -2,6 +2,14 @@
 import { isErrored as streamIsErrored } from 'node:stream';
 import { inspect } from 'node:util';
 
+interface Options {
+  /**
+   * A custom boundary to use in your generated FormData string. Will default to an internal
+   * `undici` identifying boundary if not supplied.
+   */
+  boundary?: string;
+}
+
 /**
  * @see {@link https://stackoverflow.com/a/63361543/105698}
  */
@@ -38,11 +46,13 @@ function isBuffer(buffer) {
  * @license https://github.com/nodejs/undici/blob/e39a6324c4474c6614cac98b8668e3d036aa6b18/LICENSE
  * @see {@link https://github.com/nodejs/undici/blob/e39a6324c4474c6614cac98b8668e3d036aa6b18/lib/fetch/body.js#L31}
  */
-function extractBody(object) {
+function extractBody(object, opts?: Options) {
   let source = null;
   let length = null;
 
-  const boundary = `----formdata-undici-0${`${Math.floor(Math.random() * 1e11)}`.padStart(11, '0')}`;
+  const boundary = opts?.boundary
+    ? opts.boundary
+    : `----formdata-undici-0${`${Math.floor(Math.random() * 1e11)}`.padStart(11, '0')}`;
   const prefix = `--${boundary}\r\nContent-Disposition: form-data`;
 
   /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
@@ -140,10 +150,10 @@ function extractBody(object) {
  * Convert an instance of the `FormData` API into a raw string.
  *
  */
-export default async function formDataToString(form: FormData) {
+export default async function formDataToString(form: FormData, opts: Options = {}) {
   const {
     body: { stream },
-  } = await extractBody(form);
+  } = await extractBody(form, opts);
 
   return streamToString(stream);
 }

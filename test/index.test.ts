@@ -40,4 +40,16 @@ describe('#formdata-to-string', () => {
     const output = await formDataToString(form).then(prepareOutputForSnapshot);
     expect(output).toMatchSnapshot();
   });
+
+  describe('options', () => {
+    describe('#boundary', () => {
+      it('should support supplying a custom boundary', async () => {
+        const form = new FormData();
+        form.append('dog', 'buster');
+
+        const output = await formDataToString(form, { boundary: 'CUSTOM-BOUNDARY' }).then(prepareOutputForSnapshot);
+        expect(output).toMatchSnapshot();
+      });
+    });
+  });
 });
