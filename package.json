@@ -1,6 +1,6 @@
 {
   "name": "formdata-to-string",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Transform a FormData object into a raw string",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
