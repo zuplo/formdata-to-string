@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
-import nodeStream from 'node:stream';
-import nodeUtil from 'node:util';
+import { isErrored as streamIsErrored } from 'node:stream';
+import { inspect } from 'node:util';
 
 /**
  * @see {@link https://stackoverflow.com/a/63361543/105698}
@@ -20,9 +20,7 @@ async function streamToString(data) {
  * @see {@link https://github.com/nodejs/undici/blob/e39a6324c4474c6614cac98b8668e3d036aa6b18/lib/core/util.js#L333C1-L339C2}
  */
 function isErrored(body) {
-  return !!(
-    body && (nodeStream.isErrored ? nodeStream.isErrored(body) : /state: 'errored'/.test(nodeUtil.inspect(body)))
-  );
+  return !!(body && (streamIsErrored ? streamIsErrored(body) : /state: 'errored'/.test(inspect(body))));
 }
 
 /**
