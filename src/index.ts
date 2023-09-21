@@ -1,6 +1,5 @@
-/* eslint-disable no-restricted-syntax */
-import { isErrored as streamIsErrored } from 'node:stream';
-import { inspect } from 'node:util';
+
+
 
 interface Options {
   /**
@@ -23,13 +22,6 @@ async function streamToString(data) {
   return Buffer.concat(chunks).toString('utf-8');
 }
 
-/**
- * @license https://github.com/nodejs/undici/blob/e39a6324c4474c6614cac98b8668e3d036aa6b18/LICENSE
- * @see {@link https://github.com/nodejs/undici/blob/e39a6324c4474c6614cac98b8668e3d036aa6b18/lib/core/util.js#L333C1-L339C2}
- */
-function isErrored(body) {
-  return !!(body && (streamIsErrored ? streamIsErrored(body) : /state: 'errored'/.test(inspect(body))));
-}
 
 /**
  * @license https://github.com/nodejs/undici/blob/e39a6324c4474c6614cac98b8668e3d036aa6b18/LICENSE
@@ -125,7 +117,7 @@ function extractBody(object, opts?: Options) {
         queueMicrotask(() => {
           controller.close();
         });
-      } else if (!isErrored(stream)) {
+      } else {
         controller.enqueue(new Uint8Array(value));
       }
       return controller.desiredSize > 0;
